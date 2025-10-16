@@ -1,0 +1,62 @@
+.btn-back{
+    padding: 0 5px;
+    margin: 10px;
+    outline: 0;
+    color: #1876f3;
+    background: none;
+    border: 1px solid #1876f3;
+    cursor: pointer;
+    transition: .3s;
+}
+.btn-back:hover{
+    background: #1876f3;
+    color: rgb(232, 231, 231);
+}
+.expense-form{
+    width: 80%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto;
+}
+.expense-form input{
+    width: 97%;
+    padding: 8px 5px;
+    border: 1.4px solid #1876f3;
+    color: rgb(111, 110, 110);
+    outline: 0;
+    border-radius: 6px;
+}
+.expense-form input:hover,.expense-form input:focus{
+    box-shadow: 0 0 0 3px rgba(24,118,243,.3);
+}
+.input-container{
+    display: flex;
+    gap: 10px;
+}
+.select-container{
+    padding: 8px 5px;
+     color: rgb(111, 110, 110);
+    border: 1.4px solid #1876f3;
+    outline: 0;
+    border-radius: 6px;
+}
+.select-container:hover,.select-container:focus{
+  box-shadow: 0 0 0 3px rgba(24,118,243,.3);
+}
+.btn-addexpense{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 8px 5px;
+    background-color: #1876f3;
+    color: rgb(255, 255, 255);
+    border-radius: 6px;
+    cursor: pointer;
+
+}
+.btn-addexpense:hover{
+   background-color: #1564cb;
+    
+}

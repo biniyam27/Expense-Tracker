@@ -1,0 +1,45 @@
+.expense-item{
+    width: 70%;
+    min-width: 40px;
+    min-height: 90px;
+    height:fit-content;
+    background: #1876f3;
+    margin: 10px auto;
+    padding:0 4px;
+    border-radius: 20px 0 20px 0;
+    position: relative;
+}
+.expense-item h3{
+    font-size: 10px;
+    font-family: sans-serif;
+    padding: 3px 0;
+    border-radius: 6px;
+    margin: 23px 0 0;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    
+}
+.amount{
+    font-size: 12px;
+    text-align: center;
+    margin: 10px 0;
+    color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', Times, serif ;
+}
+.btn-item{
+border: 0;
+outline: 0;
+background: none;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-size: 10px;
+color: rgb(0, 0, 0);
+position: absolute;
+right: 4px;
+top: 4px;
+cursor: pointer;
+transition: .3s;
+}
+.btn-item:hover{
+    color: red;
+}
