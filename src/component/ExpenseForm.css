@@ -1,35 +1,36 @@
 .btn-back{
-    padding: 0 5px;
+    position: absolute;
     margin: 10px;
+    font-size: 25px;
     outline: 0;
-    color: #1876f3;
+    border: none;
     background: none;
-    border: 1px solid #1876f3;
     cursor: pointer;
     transition: .3s;
 }
 .btn-back:hover{
-    background: #1876f3;
-    color: rgb(232, 231, 231);
+  font-size: 30px;
 }
+
 .expense-form{
     width: 80%;
     max-width: 400px;
     display: flex;
+    padding: 10% 0 0;
     flex-direction: column;
     gap: 10px;
-    margin: auto;
+    margin:20px auto;
 }
 .expense-form input{
     width: 97%;
     padding: 8px 5px;
-    border: 1.4px solid #1876f3;
+    border: 1.4px solid rgb(29, 201, 201);
     color: rgb(111, 110, 110);
     outline: 0;
     border-radius: 6px;
 }
 .expense-form input:hover,.expense-form input:focus{
-    box-shadow: 0 0 0 3px rgba(24,118,243,.3);
+    box-shadow: 0 0 0 3px rgba(0, 255, 255,.3);
 }
 .input-container{
     display: flex;
@@ -37,26 +38,26 @@
 }
 .select-container{
     padding: 8px 5px;
-     color: rgb(111, 110, 110);
-    border: 1.4px solid #1876f3;
+    color: rgb(111, 110, 110);
+    border: 1.4px solid rgb(29, 201, 201);
     outline: 0;
     border-radius: 6px;
 }
 .select-container:hover,.select-container:focus{
-  box-shadow: 0 0 0 3px rgba(24,118,243,.3);
+  box-shadow: 0 0 0 3px rgba(0, 255, 255,.3);
 }
 .btn-addexpense{
     width: 100%;
     border: 0;
     outline: 0;
     padding: 8px 5px;
-    background-color: #1876f3;
+    background-color: rgb(28, 186, 186);
     color: rgb(255, 255, 255);
     border-radius: 6px;
     cursor: pointer;
 
 }
 .btn-addexpense:hover{
-   background-color: #1564cb;
+   background-color: rgb(36, 154, 154);
     
 }

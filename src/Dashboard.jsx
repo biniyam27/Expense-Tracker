@@ -1,59 +1,107 @@
-import ExpenseForm from "./component/ExpenseForm"
-import ExpenseList from "./component/ExpenseList"
-import { useState,useEffect } from "react"
-import './fontawesome-free-6.6.0-web/css/fontawesome.min.css'
-import './fontawesome-free-6.6.0-web/css/all.min.css'
-import './App.css'
-function Dashboard () {
-const [isForm,setIsForm]=useState(false);
-const [expenses,setExpenses]=useState(()=>{
-  const saved=localStorage.getItem("expenses");
-  return saved ? JSON.parse(saved):[];
+import ExpenseForm from "./component/ExpenseForm";
+import ExpenseList from "./component/ExpenseList";
+import Budget from "./component/Budget";
+import { useState, useEffect } from "react";
+import Chart from "./component/Chart";
+import './fontawesome-free-6.6.0-web/css/fontawesome.min.css';
+import './fontawesome-free-6.6.0-web/css/all.min.css';
+import './App.css';
 
-})
- const [total,setTotal]=useState(0);
- useEffect(()=>{
-  localStorage.setItem("expenses",JSON.stringify(expenses));
-  const sum=expenses.reduce((acc,item)=>
-    acc + Number(item.amount),0)
-  setTotal(sum);
- },[expenses])
- const addExpenses=(expense)=>{
-  setExpenses([...expenses,expense])
-  console.log("Added:",expense)
- }
- const deleteExpenses=(id)=>{
-  setExpenses(expenses.filter((e)=>e.id!==id));
- }
- return (
-    <>
-    {isForm ? <div className="container">
-      <ExpenseForm
-     addExpense={addExpenses}
-     setIsForm={setIsForm}
-     />
+function Dashboard() {
+    const [isForm, setIsForm] = useState(false);
+    const [isBudget,setIsBudget]=useState(false);
+    const [expenses, setExpenses] = useState(() => {
+        const saved = localStorage.getItem("expenses");
+        return saved ? JSON.parse(saved) : [];
+    });
+    const [budget, setBudget] = useState(()=>{
+        const saved=localStorage.getItem("budget");
+        return saved ? Number(saved):0;
+    });
+    const [inputBudget,setInputBudget]=useState();
+    useEffect(() => {
+        const savedBudget = localStorage.getItem("budget");
+        if (savedBudget) {
+            setBudget(Number(savedBudget));
+        }
+    }, []); 
+    useEffect(() => {
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+        localStorage.setItem("budget", budget);
+        
+       
+    }, [expenses, budget]);
+     const spent = expenses.reduce((acc, item) => acc + Number(item.amount), 0);
+     const remaining=budget-spent;
+    const addExpenses = (expense) => {
+        setExpenses([...expenses, expense]);
+        console.log("Added:", expense);
+    };
+
+    const deleteExpenses = (id) => {
+        setExpenses(expenses.filter((e) => e.id !== id));
+    };
+    const handelSubmit=(e)=>{
+        e.preventDefault();
+         if(!inputBudget) 
+         return;
+        setIsBudget(false);
+        setBudget(Number(inputBudget));
+        localStorage.setItem("budget",inputBudget);
+        setInputBudget(0);
+    }
+    return (
+        <>
+            {isForm ? (
+                <div className="container expense-form-container">
+                    <ExpenseForm
+                        addExpense={addExpenses}
+                        setIsForm={setIsForm}
+                    />
+                </div>
+            ) : (
+              <>
+                {isBudget?(
+            <div className='container budget-container'>
+                <button className='btn-back fas fa-arrow-left' onClick={()=>setIsBudget(false)}></button>
+                <div className="budget-form">
+                   <form onSubmit={handelSubmit} className='expense-form'>
+                <input type="number"
+                placeholder='Set monthly budget'
+                value={inputBudget}
+                onChange={(e)=>setInputBudget(Number(e.target.value))}
+                  />
+                  <button className='btn-addexpense' type="submit">Set Budget</button>
+             </form>
+                </div>
+             
+                 <div className="summary">
+                    <Chart budget={budget} spent={spent} />
       </div>
-     :
-    <div className="container">
-      <div className="header">
-      <h1 className="title">Expense Tracker</h1>
-      <div className="total-box">
-        <h2>${total}</h2>
-      </div>
-      </div>
-     
-     
-     <ExpenseList
-     expenses={expenses}
-     deleteExpenses={deleteExpenses}
-     />
-     <button className="btn-add" onClick={()=>setIsForm(true)}>+</button>
-    </div>
+    </div>):(
+      <div className="container">
+                    <div className="header">
+                        <div className="nav">
+                            <h1 className="title">Expense Tracker</h1>
+                            <button className="btn-budget" onClick={()=>setIsBudget(true)}>Budget Reviews</button>
+                        </div>
+                        
+                        <div className="total-box">
+                            <h2>{remaining}birr</h2>
+                        </div>
+                    </div>
+                    <ExpenseList
+                        expenses={expenses}
+                        deleteExpenses={deleteExpenses}
+                    />
+                    <button className="btn-add" onClick={() => setIsForm(true)}>+</button>
+                </div>
+
+    )}
+                
+           </> )}
+        </>
+    );
 }
-    </>
-  )
-}
 
- 
-
-export default Dashboard
+export default Dashboard;

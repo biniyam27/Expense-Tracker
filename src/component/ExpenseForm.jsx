@@ -16,6 +16,7 @@ function ExpenseForm({addExpense,setIsForm}) {
       title,
       amount,
       catagory,
+      date:new Date().toLocaleDateString(),
     }
     addExpense(newExpense);
     setTitle("");
@@ -26,7 +27,8 @@ function ExpenseForm({addExpense,setIsForm}) {
   return (
     <>
     <button className='btn-back fas fa-arrow-left' onClick={()=>setIsForm(false)}></button>
-    <form className='expense-form' 
+    <div className="form-container">
+       <form className='expense-form' 
     onSubmit={handelSubmit}>
 
       <input type="text"
@@ -56,6 +58,8 @@ function ExpenseForm({addExpense,setIsForm}) {
       
       <button className='btn-addexpense' type='submit'>Add Expense</button>
     </form>
+    </div>
+    
     </>
   )
 }

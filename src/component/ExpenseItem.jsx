@@ -4,13 +4,13 @@ function ExpenseItem({expense,deleteExpenses}) {
   return (
     <div className='expense-item'>
       <button className='btn-item fas fa-trash' onClick={()=>deleteExpenses(expense.id)}></button>
-      <div>
+      <div className='expense-detail'>
         <h3>{expense.title}</h3>
+         <p className='amount'>{expense.amount} birr</p>
       </div>
-      <div className="right">
-        <p className='amount'>${expense.amount}</p>
-        
-      </div>
+      
+        <p className='date'>{expense.date}</p>
+      
       
     </div>
   )
