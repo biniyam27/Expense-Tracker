@@ -2,8 +2,12 @@ import ExpenseForm from "./component/ExpenseForm";
 import ExpenseList from "./component/ExpenseList";
 import { useState, useEffect } from "react";
 import Chart from "./component/Chart";
+<<<<<<< HEAD
 import '.fontawesome-free-6.6.0-web/css/fontawesome.min.css';
 import '.fontawesome-free-6.6.0-web/css/all.min.css';
+=======
+import '@fortawesome/fontawesome-free/css/all.min.css';
+>>>>>>> c231eba (Fix fontawesome import and update Dashboard)
 import './App.css';
 import Footer from "./component/Footer";
 
