@@ -2,8 +2,8 @@ import ExpenseForm from "./component/ExpenseForm";
 import ExpenseList from "./component/ExpenseList";
 import { useState, useEffect } from "react";
 import Chart from "./component/Chart";
-import './fontawesome-free-6.6.0-web/css/fontawesome.min.css';
-import './fontawesome-free-6.6.0-web/css/all.min.css';
+import '.fontawesome-free-6.6.0-web/css/fontawesome.min.css';
+import '.fontawesome-free-6.6.0-web/css/all.min.css';
 import './App.css';
 import Footer from "./component/Footer";
 
