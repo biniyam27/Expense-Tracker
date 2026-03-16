@@ -28,7 +28,7 @@ function ExpenseForm({addExpense,setIsForm}) {
     <>
     <button className='btn-back fas fa-arrow-left' onClick={()=>setIsForm(false)}></button>
     <div className="form-container">
-       <form className='expense-form' 
+       <form className='expense-form addForm' 
     onSubmit={handelSubmit}>
 
       <input type="text"

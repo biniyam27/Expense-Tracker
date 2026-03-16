@@ -1,6 +1,6 @@
 .expense-item{
     width: 70%;
-    min-width: 40px;
+    min-width: 150px;
     height:fit-content;
     background:linear-gradient(40deg,rgb(84, 252, 252),rgb(0, 88, 150),rgb(48, 48, 48));
     margin: 10px auto;

@@ -1,11 +1,11 @@
 import ExpenseForm from "./component/ExpenseForm";
 import ExpenseList from "./component/ExpenseList";
-import Budget from "./component/Budget";
 import { useState, useEffect } from "react";
 import Chart from "./component/Chart";
 import './fontawesome-free-6.6.0-web/css/fontawesome.min.css';
 import './fontawesome-free-6.6.0-web/css/all.min.css';
 import './App.css';
+import Footer from "./component/Footer";
 
 function Dashboard() {
     const [isForm, setIsForm] = useState(false);
@@ -54,18 +54,23 @@ function Dashboard() {
         <>
             {isForm ? (
                 <div className="container expense-form-container">
-                    <ExpenseForm
+                    <div className="page">
+                      <ExpenseForm
                         addExpense={addExpenses}
                         setIsForm={setIsForm}
                     />
+                    </div>
+                    
+                    <Footer/>
                 </div>
             ) : (
               <>
                 {isBudget?(
             <div className='container budget-container'>
-                <button className='btn-back fas fa-arrow-left' onClick={()=>setIsBudget(false)}></button>
-                <div className="budget-form">
-                   <form onSubmit={handelSubmit} className='expense-form'>
+                <div className="page">
+                    <button className='btn-back fas fa-arrow-left' onClick={()=>setIsBudget(false)}></button>
+                <div className=" form-container">
+                   <form onSubmit={handelSubmit} className='budget-form expense-form'>
                 <input type="number"
                 placeholder='Set monthly budget'
                 value={inputBudget}
@@ -77,10 +82,14 @@ function Dashboard() {
              
                  <div className="summary">
                     <Chart budget={budget} spent={spent} />
-      </div>
+              </div>
+            </div>
+                
+      <Footer/>
     </div>):(
-      <div className="container">
-                    <div className="header">
+      <div className="container home-container">
+            <div className="page">
+                <div className="header">
                         <div className="nav">
                             <h1 className="title">Expense Tracker</h1>
                             <button className="btn-budget" onClick={()=>setIsBudget(true)}>Budget Reviews</button>
@@ -95,11 +104,16 @@ function Dashboard() {
                         deleteExpenses={deleteExpenses}
                     />
                     <button className="btn-add" onClick={() => setIsForm(true)}>+</button>
+            </div>
+                    
+                    <Footer/>
                 </div>
 
     )}
                 
            </> )}
+
+          
         </>
     );
 }

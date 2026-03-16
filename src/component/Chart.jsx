@@ -6,14 +6,19 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 function Chart({ budget, spent }) {
   const remaining = budget - spent > 0 ? budget - spent : 0;
   const options = {
-  plugins: {
-    legend: {
-      labels: {
-        color: "white"
+    plugins: {
+      legend: {
+        position: window.innerWidth < 600 ? "bottom" : "right",
+        labels: {
+          color: "white",
+          gap: 20,
+          font: {
+            size: window.innerWidth < 600 ? 12 : 14
+          }
+        }
       }
     }
-  }
-};
+  };
   const data = {
     labels: ["Budget", "Spent", "Remaining"],
     datasets: [
@@ -27,7 +32,7 @@ function Chart({ budget, spent }) {
     ],
   };
 
-  return <Doughnut data={data} options={options} />;
+  return <div className="chart-container"><Doughnut data={data} options={options} /></div>
 }
 
 export default Chart;
